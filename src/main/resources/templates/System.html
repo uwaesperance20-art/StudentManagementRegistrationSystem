@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Registration</title>
+</head>
+<body>
+
+<h1>Student Registration Form</h1>
+
+<p th:if="${successMessage}"
+   th:text="${successMessage}">
+</p>
+
+<p th:if="${errorMessage}"
+   th:text="${errorMessage}">
+</p>
+
+<form th:action="@{/student/register}"
+      th:object="${student}"
+      method="post">
+
+    <label>Full Name:</label>
+    <input type="text" th:field="*{fullName}" required>
+
+    <br><br>
+
+    <label>Age:</label>
+    <input type="number" th:field="*{age}" required>
+
+    <br><br>
+
+    <label>Email:</label>
+    <input type="email" th:field="*{email}" required>
+
+    <br><br>
+
+    <button type="submit">Register Student</button>
+
+</form>
+
+<br>
+
+<a th:href="@{/student/all}">View All Students</a>
+
+</body>
+</html>
